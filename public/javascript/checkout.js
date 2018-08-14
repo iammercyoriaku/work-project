@@ -1,4 +1,6 @@
-Stripe.setPublishableKey('pk_test_tHfOar5aKcCZ7ceMI9oWcnBS');
+ var stripe = Stripe('pk_test_tHfOar5aKcCZ7ceMI9oWcnBS');
+
+// Stripe.setPublishableKey('pk_test_tHfOar5aKcCZ7ceMI9oWcnBS');
 
 var $form = $('#checkout-form');
 
@@ -16,14 +18,15 @@ $form.submit(function(event){
 });
 
 function stripeResponseHandler(status, response){
+    console.log(response)
     if(response.error){
         
         $('#charge-error').text(response.error.message);
         $('#charge-error').removeClass('hidden');
         $form.find('button').prop('disabled', false);
     }else{
+        
         var token = response.id;
-        console.log(token);
 
         $form.append($('<input type="hidden" name="stripeToken"/>').val(token));
 

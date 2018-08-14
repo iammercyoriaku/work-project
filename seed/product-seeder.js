@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://shopping:shopping1@ds159776.mlab.com:59776/shopping');
 
+
 var products = [
     new Product({
         title: 'HandBag',
